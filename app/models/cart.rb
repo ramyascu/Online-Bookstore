@@ -4,8 +4,6 @@ class Cart < ApplicationRecord
     def add_item( product_id)
         
         current_item = lineitems.find_by(product_id: product_id)        
-
-        debugger
         
         if current_item
             current_item.quantity += 1

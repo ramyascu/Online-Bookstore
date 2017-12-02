@@ -24,7 +24,7 @@ class LineitemsController < ApplicationController
       if @line_item.save
         #format.html { redirect_to @line_item.cart,
         format.html { redirect_to shopper_index_url}
-        format.js
+        # format.js
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }

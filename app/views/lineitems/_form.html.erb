@@ -1,5 +1,4 @@
 <%= form_with(model: lineitem, local: true) do |form| %>
-debugger
 <% if lineitem.errors.any? %>
 <div id="error_explanation">
     <h2><%= pluralize(lineitem.errors.count, "error") %> prohibited this lineitem from being saved:</h2>
