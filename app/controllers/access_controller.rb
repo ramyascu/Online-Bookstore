@@ -1,4 +1,5 @@
 class AccessController < ApplicationController
+  skip_before_action :authorize, only: [:new, :create]
   def new
     if session[:user_id]
         redirect_to admin_url, notice: "already logged on"
