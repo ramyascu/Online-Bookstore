@@ -53,3 +53,7 @@ Product.create!(name: 'Ruby on Rails Tutorial: Learn Web Development with Rails 
     </p>},   
     image: 'rails.jpg',  
     price: 55.95)
+
+User.delete_all
+User.create!(name: 'admin', password: 'admin')
+
