@@ -8,6 +8,7 @@ class Order < ApplicationRecord
         cart.lineitems.each do |item|
             item.cart_id = nil
             item.order_id = self.id
+            lineitems << item
         end
     end
 end

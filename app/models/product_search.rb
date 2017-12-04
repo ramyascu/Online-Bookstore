@@ -13,9 +13,9 @@ class ProductSearch
         @description = params[:description].to_s
 
         # Parse min_price and max_price to integers. If empty or error, the default
-        # values will be set to 0.
-        @min_price = parsed_price(params[:min_price], 0)
-        @max_price = parsed_price(params[:max_price], 0)
+        # values will be set to nil.
+        @min_price = parsed_price(params[:min_price], nil)
+        @max_price = parsed_price(params[:max_price], nil)
     end
 
 
@@ -23,12 +23,12 @@ class ProductSearch
         current_list = Product.order(:name)
 
         # Filter based on max price, if it is specified
-        if @max_price > 0
+        if !@max_price.nil? and @max_price > 0
             current_list = current_list.where('price <= ?', @max_price)
         end
 
         # Filter based on min price, if it is specified
-        if @min_price > 0
+        if !@min_price.nil? and @min_price > 0
             current_list = current_list.where('price >= ?', @min_price)
         end
 
@@ -50,7 +50,11 @@ class ProductSearch
     # Private method to parse a given string to an integer. If there is error in parsing
     # or if the string is empty, then return the default value
     def parsed_price(price_string, default)
-        price_string.to_i
+        if price_string.nil?
+            return nil
+        else
+            return price_string.to_i
+        end
     rescue 
         default
     end

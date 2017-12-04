@@ -20,5 +20,18 @@
   <%= @order.paytype %>
 </p>
 
+<table>
+  <tr>
+    <th>Product Name</th>
+    <th>Quantity</th>
+  </tr>
+	<% @order.lineitems.each do |item|%>
+	<tr>
+    <td><%=item.product.name %></td>
+		<td><%= item.quantity %></td>
+	</tr>
+	<%end%>
+</table>
+
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
