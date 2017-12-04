@@ -5,6 +5,16 @@
 
 <h1>Product Catalog</h1>
 
+<div class="product_search">
+	<%= form_tag shopper_path, method: :get do %>
+		<%= text_field_tag 'search[name]', @search.name %>
+		<%= text_field_tag 'search[description]', @search.description %>
+		<%= text_field_tag 'search[min_price]', @search.min_price %>
+		<%= text_field_tag 'search[max_price]', @search.max_price %>
+		<%= submit_tag 'Search', class: 'btn search-button' %>
+<% end %>
+</div>
+
 <% @products.each do |product| %>
 <div class="entry">
 	<%= image_tag(product.image) %>

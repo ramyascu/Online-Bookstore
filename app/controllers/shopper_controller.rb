@@ -4,6 +4,8 @@ class ShopperController < ApplicationController
     before_action :set_cart
 
     def index
-        @products = Product.order( :name)
+        @search = ProductSearch.new(params[:search])
+        @products = @search.scope
+        #@products = Product.order( :name)
     end
 end
